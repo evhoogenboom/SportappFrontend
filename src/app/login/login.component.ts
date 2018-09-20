@@ -9,9 +9,10 @@ import { RegisterService } from '../../Service/RegisterService';
 })
 export class LoginComponent implements OnInit {
 
-  
+  username: string;
+  password: string;
 
-  constructor() { }
+  constructor(private service loginService) { }
 
   ngOnInit() {
   }
