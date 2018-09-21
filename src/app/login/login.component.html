@@ -1,36 +1,38 @@
+
 <p>
     <button routerLink="">
-      Home
+        Home
     </button>
-  </p>
-  
-    <table>
-      <tr>
-        <td>
-          Enter username
-        </td>
-        <td>
-            <input type="text" [(ngModel)]="username"/>
-        </td>
-      </tr>
-      <tr>
-    
-      </tr>
-      <tr>
-        <td>
-          Enter password
-        </td>
-        <td>
-            <input type="text" [(ngModel)]="password"/>
-        </td>
-      </tr>
-      <tr>
-    
-      </tr>
-      <tr>
-        <button (click)="save()">
-          Login
-        </button>
-      </tr>
-    </table>
-  
+</p>
+
+      
+        <table>
+          <tr>
+            <td>
+              Enter a username
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="username"/>
+            </td>
+          </tr>
+          <tr>
+        
+          </tr>
+          <tr>
+            <td>
+              Enter a password
+            </td>
+            <td>
+                <input type="text" [(ngModel)]="password"/>
+            </td>
+          </tr>
+          <tr>
+        
+          </tr>
+          <tr>
+            <button (click)="login()">
+              login
+            </button>
+          </tr>
+        </table>
+      

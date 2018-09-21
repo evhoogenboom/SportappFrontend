@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegisterService } from '../Service/RegisterService';
+import { LoginService } from '../Service/LoginService';
 import { TestComponent } from './test/test.component';
 import { RegisterComponent } from './register/register.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    RegisterService
+    RegisterService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
