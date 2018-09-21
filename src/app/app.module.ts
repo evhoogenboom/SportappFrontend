@@ -12,6 +12,7 @@ import { TestComponent } from './test/test.component';
 import { RegisterComponent } from './register/register.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserSpaceComponent } from './user-space/user-space.component';
 
 
 
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path: '', component: FrontpageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'userspace', component: UserSpaceComponent }
 ];
 
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     TestComponent,
     RegisterComponent,
     FrontpageComponent,
-    AdminComponent
+    AdminComponent,
+    UserSpaceComponent
   ],
   imports: [
     BrowserModule,
