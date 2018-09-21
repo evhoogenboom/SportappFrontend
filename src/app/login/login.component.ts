@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit{
     if (localStorage.getItem('loginStatus') == 'ingelogd' ) {
       alert('if is true');
       
+
     }
   }
 
