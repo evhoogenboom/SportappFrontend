@@ -22,6 +22,13 @@ export class LoginService {
       return null;
   }
 
+  findUser(username: string): Observable<LoginDTO[]> {
+    return this.http.get<LoginDTO[]>('http://localhost:9090/api/login/' + username);
+  }
+
+  //findPerson(id: number): Observable<PersonDto> {
+    //return this.http.get<PersonDto>('http://localhost:9001/api/person/' + id);
+  //}
 
 }
 

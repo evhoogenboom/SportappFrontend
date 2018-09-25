@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-space',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSpaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.length == 0 || localStorage.getItem('loginStatus') != 'ingelogd' ) {
+      this.router.navigateByUrl('login');
+    }
   }
+
+  logout() {
+    localStorage.removeItem('loginStatus');
+    this.router.navigateByUrl('login');
+  }
+
+
+
+
 
 }
