@@ -13,6 +13,9 @@ import { RegisterComponent } from './register/register.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserSpaceComponent } from './user-space/user-space.component';
+import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
+import { ExerciseDTO } from '../model/ExerciseDTO';
+import { ExerciseService } from '../Service/ExerciseService';
 
 
 
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     FrontpageComponent,
     AdminComponent,
-    UserSpaceComponent
+    UserSpaceComponent,
+    CreateExerciseComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     RegisterService,
-    LoginService
+    LoginService,
+    ExerciseService
+
   ],
   bootstrap: [AppComponent]
 })

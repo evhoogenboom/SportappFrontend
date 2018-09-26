@@ -21,11 +21,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  dto = new RegisterDTO;
+  
   save() {
-    let dto = new RegisterDTO();
-    dto.username = this.username;
-    dto.password = this.password;
-    this.service.save(dto).subscribe(data => {});
+    this.dto.username = this.username;
+    this.dto.password = this.password;
+    this.service.save(this.dto).subscribe(data => {});
   }
 
 

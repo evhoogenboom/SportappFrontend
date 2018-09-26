@@ -1,10 +1,24 @@
-<p>
-
-  <button (click)="logout()">
+<table>
+<tr>
+  <td>
+    <button (click)="logout()">
       Logout
+    </button>
+  </td>
+  <td>
+  <button routerLink="">
+    Home
   </button>
-</p>
+  </td>
+</tr>
+  
+</table>
 <p>
   Welcome to the userspace
-  
 </p>
+<p>
+  <app-create-exercise>
+
+  </app-create-exercise>
+</p>
+
