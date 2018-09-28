@@ -5,10 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder } from '@angular/forms';
 import { RegisterService } from '../Service/RegisterService';
 import { LoginService } from '../Service/LoginService';
-import { TestComponent } from './test/test.component';
+
 import { RegisterComponent } from './register/register.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { AdminComponent } from './admin/admin.component';
@@ -16,6 +16,7 @@ import { UserSpaceComponent } from './user-space/user-space.component';
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
 import { ExerciseDTO } from '../model/ExerciseDTO';
 import { ExerciseService } from '../Service/ExerciseService';
+import { SpecificationService } from '../Service/SpecificationService';
 
 
 
@@ -33,7 +34,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    TestComponent,
     RegisterComponent,
     FrontpageComponent,
     AdminComponent,
@@ -49,7 +49,9 @@ const appRoutes: Routes = [
   providers: [
     RegisterService,
     LoginService,
-    ExerciseService
+    ExerciseService,
+    SpecificationService,
+    FormBuilder
 
   ],
   bootstrap: [AppComponent]

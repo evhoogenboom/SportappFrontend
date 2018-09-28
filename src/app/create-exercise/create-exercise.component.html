@@ -1,29 +1,69 @@
 
+<h2>
+  Specify an exercise and add it to your routine:
+</h2>
+
+<table>
+  <tr><th>Add new exercise</th><th></th><th width="100px">OR</th><th width='250px'>Use a 'random' existing exercise</th></tr>
+
+  <tr>
+    <td>Exercise name</td>
+    <td><input type="text" [(ngModel)]="name"/></td>
+    
+    <td>
+          
+    </td>
+    <td>
+        <form>
+            <select name="countryControl" [(ngModel)]="oefening">
+              <option [ngValue]="exercise" *ngFor="let exercise of exercises">{{exercise.name}}</option>
+            </select>
+           </form>
+    </td>
+  </tr>
+
+  <tr><td>Exercise description</td><td><input type="text" [(ngModel)]="description"/></td></tr>
+  <tr><td></td></tr>
+</table>
+
+<p>
+  een paragraaf {{oefening.name}}
+</p>
+
+<table>
+  <tr><th>Add specific info</th></tr>
+  <tr><td>Specification repetitions</td><td><input type="number" [(ngModel)]="repetitions"/></td></tr>
+  <tr><td>SecBreak</td><td><input type="number" [(ngModel)]="secBreak"/></td></tr>
+  <tr><td>Other info</td><td><input type="text" [(ngModel)]="other"/></td></tr>
+</table>
+
+
+
+  
   <table>
-    <tr>
-      <td>
-        Exercise name
-      </td>
-      <td>
-          <input type="text" [(ngModel)]="name"/>
-      </td>
-    </tr>
 
     <tr>
       <td>
-        Exercise description
+
+      </td>
+      <button (click)="newExercise()">
+        Add new exercise to routine
+      </button>
+      <td>
+
       </td>
       <td>
-          <input type="text" [(ngModel)]="description"/>
+          <button (click)="reUseExercise()">
+              Add 'random' existing exercise to routine
+            </button>
       </td>
     </tr>
-    <tr>
-  
-    </tr>
-    <tr>
-      <button (click)="save()">
-        Add new exercise
-      </button>
-    </tr>
   </table>
+
+  <p>
+    Selected exercise: {{this.selectedExercise}}
+  </p>
+
+  
+  
 
