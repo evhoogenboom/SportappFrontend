@@ -4,7 +4,7 @@
 </h2>
 
 <table>
-  <tr><th>Add new exercise</th><th></th><th width="100px">OR</th><th width='250px'>Use a 'random' existing exercise</th></tr>
+  <tr><th>Add new exercise</th><th></th><th width="100px">OR</th><th width='250px'>Select an existing exercise</th></tr>
 
   <tr>
     <td>Exercise name</td>
@@ -15,7 +15,7 @@
     </td>
     <td>
         <form>
-            <select name="countryControl" [(ngModel)]="oefening">
+            <select name="exerciseControl" [(ngModel)]="this.selectedExercise">
               <option [ngValue]="exercise" *ngFor="let exercise of exercises">{{exercise.name}}</option>
             </select>
            </form>
@@ -27,7 +27,7 @@
 </table>
 
 <p>
-  een paragraaf {{oefening.name}}
+  
 </p>
 
 <table>
@@ -37,33 +37,11 @@
   <tr><td>Other info</td><td><input type="text" [(ngModel)]="other"/></td></tr>
 </table>
 
-
-
-  
-  <table>
-
-    <tr>
-      <td>
-
-      </td>
-      <button (click)="newExercise()">
-        Add new exercise to routine
-      </button>
-      <td>
-
-      </td>
-      <td>
-          <button (click)="reUseExercise()">
-              Add 'random' existing exercise to routine
-            </button>
-      </td>
-    </tr>
-  </table>
-
-  <p>
-    Selected exercise: {{this.selectedExercise}}
-  </p>
-
-  
+<p>
+  <button (click)="addSpecification()">
+    Add new exercise to routine
+  </button>
+</p>
+ 
   
 

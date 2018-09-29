@@ -10,14 +10,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './create-exercise.component.html',
   styleUrls: ['./create-exercise.component.css']
 })
+
 export class CreateExerciseComponent implements OnInit {
   countryForm: FormGroup;
 
  
 
   // exercise info
-  name: string;
-  description: string;
+  name = '';
+  description = '';
 
   // specification info
   repetitions: number;
@@ -27,16 +28,37 @@ export class CreateExerciseComponent implements OnInit {
    // keep track of selected exercise
    selectedExercise: ExerciseDTO;
    exercises: ExerciseDTO[];
-  
    
-
-
+  
+  
   constructor(private exerciseService: ExerciseService, 
     private specificationService: SpecificationService) { }
 
 
   ngOnInit() {
-   this.fillComboBox();
+   this.loadExercises();
+  }
+
+
+  loadExercises() {
+    this.exerciseService.findAllExercises().subscribe(data => {
+      this.exercises = data;
+      });
+  }
+
+
+  addSpecification() {
+    if (this.name != '') {
+      this.newExercise();
+    } else if (this.selectedExercise != null) {
+      this.reUseExercise();
+    } 
+  }
+
+  
+  reUseExercise() {
+    alert('reuse exercise');
+    this.saveSpecification(this.selectedExercise);
   }
 
 
@@ -46,25 +68,10 @@ export class CreateExerciseComponent implements OnInit {
     dto.description = this.description;
 
     this.exerciseService.save(dto).subscribe(data => {
-    this.selectedExercise = data;
+    dto = data;
     alert(dto.id);
+    this.saveSpecification(dto);
     });
-  }
-
-  fillComboBox() {
-    this.exerciseService.findAllExercises().subscribe(data => {
-      this.exercises = data;
-      alert('in onitit');
-      });
-  }
-
-  reUseExercise() {
-    this.exerciseService.findAllExercises().subscribe(data => {
-      let exercises = data;
-      let randomExerciseDTO = exercises[0];
-      this.selectedExercise = randomExerciseDTO;
-      alert('hergebruik exercise');
-      });
   }
 
 
@@ -73,7 +80,7 @@ export class CreateExerciseComponent implements OnInit {
     specificationDTO.exercise = exerciseDTO;
     specificationDTO = this.addSpecificationInfo(specificationDTO);
     
-      this.specificationService.save(specificationDTO).subscribe(data => {
+    this.specificationService.save(specificationDTO).subscribe(data => {
       specificationDTO = data;
       });
   }
