@@ -1,5 +1,6 @@
 <table>
 <tr>
+  <td>Userspace</td>
   <td>
     <button (click)="logout()">
       Logout
@@ -11,15 +12,14 @@
   </button>
   </td>
 </tr>
+<tr><button (click)="newRoutine()">New routine</button></tr>
   
 </table>
-<p>
-  Welcome to the userspace
-</p>
-<p>
+
+<div *ngIf="wantsNewSpecification">
   <app-create-exercise>
 
   </app-create-exercise>
-</p>
+</div>
 
 

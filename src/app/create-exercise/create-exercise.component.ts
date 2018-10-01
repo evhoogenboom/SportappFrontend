@@ -4,6 +4,7 @@ import { ExerciseDTO } from '../../model/ExerciseDTO';
 import { SpecificationDTO } from '../../model/SpecificationDTO';
 import { SpecificationService } from '../../Service/SpecificationService';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserSpaceComponent } from '../user-space/user-space.component';
 
 @Component({
   selector: 'app-create-exercise',
@@ -28,7 +29,7 @@ export class CreateExerciseComponent implements OnInit {
    // keep track of selected exercise
    selectedExercise: ExerciseDTO;
    exercises: ExerciseDTO[];
-   
+
   
   
   constructor(private exerciseService: ExerciseService, 
@@ -46,7 +47,6 @@ export class CreateExerciseComponent implements OnInit {
       });
   }
 
-
   addSpecification() {
     if (this.name != '') {
       this.newExercise();
@@ -54,19 +54,16 @@ export class CreateExerciseComponent implements OnInit {
       this.reUseExercise();
     } 
   }
-
   
   reUseExercise() {
     alert('reuse exercise');
     this.saveSpecification(this.selectedExercise);
   }
 
-
   newExercise() {
     let dto = new ExerciseDTO();
     dto.name = this.name;
     dto.description = this.description;
-
     this.exerciseService.save(dto).subscribe(data => {
     dto = data;
     alert(dto.id);
@@ -74,17 +71,14 @@ export class CreateExerciseComponent implements OnInit {
     });
   }
 
-
   saveSpecification(exerciseDTO: ExerciseDTO) {
     let specificationDTO = new SpecificationDTO();
     specificationDTO.exercise = exerciseDTO;
     specificationDTO = this.addSpecificationInfo(specificationDTO);
-    
     this.specificationService.save(specificationDTO).subscribe(data => {
       specificationDTO = data;
       });
   }
-
 
   addSpecificationInfo(specificationDTO: SpecificationDTO) {
     specificationDTO.repetitions = this.repetitions;

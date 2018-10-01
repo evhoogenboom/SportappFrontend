@@ -11,12 +11,12 @@ import { LoginService } from '../Service/LoginService';
 
 import { RegisterComponent } from './register/register.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
-import { AdminComponent } from './admin/admin.component';
 import { UserSpaceComponent } from './user-space/user-space.component';
 import { CreateExerciseComponent } from './create-exercise/create-exercise.component';
 import { ExerciseDTO } from '../model/ExerciseDTO';
 import { ExerciseService } from '../Service/ExerciseService';
 import { SpecificationService } from '../Service/SpecificationService';
+import { RoutineService } from '../Service/RoutineService';
 
 
 
@@ -25,7 +25,6 @@ const appRoutes: Routes = [
   { path: '', component: FrontpageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent },
   { path: 'userspace', component: UserSpaceComponent }
 ];
 
@@ -36,7 +35,6 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     FrontpageComponent,
-    AdminComponent,
     UserSpaceComponent,
     CreateExerciseComponent
   ],
@@ -50,6 +48,7 @@ const appRoutes: Routes = [
     RegisterService,
     LoginService,
     ExerciseService,
+    RoutineService,
     SpecificationService,
     FormBuilder
 
