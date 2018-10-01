@@ -1,0 +1,47 @@
+
+<h2>
+  Specify an exercise and add it to your routine:
+</h2>
+
+<table>
+  <tr><th>Add new exercise</th><th></th><th width="100px">OR</th><th width='250px'>Select an existing exercise</th></tr>
+
+  <tr>
+    <td>Exercise name</td>
+    <td><input type="text" [(ngModel)]="name"/></td>
+    
+    <td>
+          
+    </td>
+    <td>
+        <form>
+            <select name="exerciseControl" [(ngModel)]="this.selectedExercise">
+              <option [ngValue]="exercise" *ngFor="let exercise of exercises">{{exercise.name}}</option>
+            </select>
+           </form>
+    </td>
+  </tr>
+
+  <tr><td>Exercise description</td><td><input type="text" [(ngModel)]="description"/></td></tr>
+  <tr><td></td></tr>
+</table>
+
+<p>
+  
+</p>
+
+<table>
+  <tr><th>Add specific info</th></tr>
+  <tr><td>Specification repetitions</td><td><input type="number" [(ngModel)]="repetitions"/></td></tr>
+  <tr><td>SecBreak</td><td><input type="number" [(ngModel)]="secBreak"/></td></tr>
+  <tr><td>Other info</td><td><input type="text" [(ngModel)]="other"/></td></tr>
+</table>
+
+<p>
+  <button (click)="addSpecification()">
+    Add to routine
+  </button>
+</p>
+ 
+  
+
