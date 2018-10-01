@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RoutineDTO } from '../../model/RoutineDTO';
 
 @Component({
   selector: 'app-user-space',
@@ -7,6 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-space.component.css']
 })
 export class UserSpaceComponent implements OnInit {
+
+  routines: RoutineDTO[];
+  currentRoutine: RoutineDTO;
+
+  // show and hide components
+  
+  wantsNewSpecification = false;
+  
+
+
 
   constructor(private router: Router) { }
 
@@ -21,6 +32,9 @@ export class UserSpaceComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  newRoutine() {
+    this.wantsNewSpecification = true;
+  }
 
 
 

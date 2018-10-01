@@ -1,10 +1,25 @@
-<p>
-
-  <button (click)="logout()">
+<table>
+<tr>
+  <td>Userspace</td>
+  <td>
+    <button (click)="logout()">
       Logout
+    </button>
+  </td>
+  <td>
+  <button routerLink="">
+    Home
   </button>
-</p>
-<p>
-  Welcome to the userspace
+  </td>
+</tr>
+<tr><button (click)="newRoutine()">New routine</button></tr>
   
-</p>
+</table>
+
+<div *ngIf="wantsNewSpecification">
+  <app-create-exercise>
+
+  </app-create-exercise>
+</div>
+
+
