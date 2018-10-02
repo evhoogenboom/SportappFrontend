@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutineService } from '../../Service/RoutineService';
+import { RoutineDTO } from '../../model/RoutineDTO';
 
 @Component({
   selector: 'app-create-routine',
@@ -8,11 +9,19 @@ import { RoutineService } from '../../Service/RoutineService';
 })
 export class CreateRoutineComponent implements OnInit {
 
+  name: string;
+
   showNewSpecification = false;
 
   constructor(private routineService: RoutineService) { }
 
   ngOnInit() {
+  }
+
+  createNewRoutine() {
+    let routineDTO = new RoutineDTO();
+    routineDTO.name = this.name;
+    
   }
 
   newSpecification() {
