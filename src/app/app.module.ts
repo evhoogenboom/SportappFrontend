@@ -17,6 +17,7 @@ import { ExerciseDTO } from '../model/ExerciseDTO';
 import { ExerciseService } from '../Service/ExerciseService';
 import { SpecificationService } from '../Service/SpecificationService';
 import { RoutineService } from '../Service/RoutineService';
+import { CreateRoutineComponent } from './create-routine/create-routine.component';
 
 
 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     FrontpageComponent,
     UserSpaceComponent,
-    CreateExerciseComponent
+    CreateExerciseComponent,
+    CreateRoutineComponent
   ],
   imports: [
     BrowserModule,
