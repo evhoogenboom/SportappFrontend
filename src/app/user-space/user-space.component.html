@@ -1,12 +1,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <header id=header>
-  <i class="material-icons">face</i>{{loggedInUser}}
+  <button id=stupid>
+    <i class="material-icons">face</i>
+  </button>
+  {{loggedInUser}}
   <div style='float: right'>
     <button (click)="logout()"><i class="material-icons">logout</i></button>
     <div class="divider"></div>
     <button routerLink=""><i class="material-icons">home</i></button>
-</div>
+  </div>
 </header>
 
 <app-dashboard></app-dashboard>

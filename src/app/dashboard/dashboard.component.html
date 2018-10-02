@@ -1,9 +1,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <div id=body>
-  <h1>
-    Routines
-  </h1>
+  <h1>My routines</h1>
   <p *ngFor="let routine of routines">
     <button  (click)="select(routine)">{{routine.name}}</button>
     <button class=delete (click)=delete(routine)><i class="material-icons" >delete_outline</i></button>

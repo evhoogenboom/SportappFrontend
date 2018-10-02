@@ -1,7 +1,13 @@
 button {
+    font-family: FreeMono, monospace;
     border-radius: 10px;
     width: 170px;
     vertical-align: middle;
+}
+
+h1 {
+    font-family: FreeMono, monospace;
+    font-size: 25px;
 }
 
 .action {
@@ -10,8 +16,7 @@ button {
 }
 
 .material-icons {
-    color: gray;
-    height: 5px; 
+    color: gray; 
 }
 
 .delete {
