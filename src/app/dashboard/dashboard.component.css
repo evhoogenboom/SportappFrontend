@@ -1,0 +1,21 @@
+button {
+    border-radius: 10px;
+    width: 170px;
+}
+
+.action {
+    background-color: rgb(128, 106, 52);
+    color: white;
+}
+
+.material-icons {
+    color: gray;
+    height: 5px; 
+}
+
+.delete {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+
+}

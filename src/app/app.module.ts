@@ -17,16 +17,20 @@ import { ExerciseDTO } from '../model/ExerciseDTO';
 import { ExerciseService } from '../Service/ExerciseService';
 import { SpecificationService } from '../Service/SpecificationService';
 import { RoutineService } from '../Service/RoutineService';
+
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateRoutineComponent } from './create-routine/create-routine.component';
 
 
 
 
+
 const appRoutes: Routes = [
-  { path: '', component: FrontpageComponent },
+  { path: '', component: DashboardComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'userspace', component: UserSpaceComponent }
+  { path: 'userspace', component: UserSpaceComponent },
+  { path: 'dashboard', component: DashboardComponent}
 ];
 
 
@@ -38,6 +42,7 @@ const appRoutes: Routes = [
     FrontpageComponent,
     UserSpaceComponent,
     CreateExerciseComponent,
+    DashboardComponent,
     CreateRoutineComponent
   ],
   imports: [
@@ -53,7 +58,6 @@ const appRoutes: Routes = [
     RoutineService,
     SpecificationService,
     FormBuilder
-
   ],
   bootstrap: [AppComponent]
 })
