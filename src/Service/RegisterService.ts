@@ -17,7 +17,6 @@ export class RegisterService {
    // if ( dto.id > 0) // If id larger than 0 then the person needs to be updated not added
    //   return this.http.put<PersonDto>('http://localhost:9090/api/person/' + dto.id, dto);
    // else
-   alert("test");
       return this.http.post<RegisterDTO>('http://localhost:9090/api/user', dto);
   }
 
