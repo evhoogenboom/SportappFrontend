@@ -25,19 +25,22 @@ export class LoginComponent implements OnInit{
     var users;
     var username;
     var password;
+    var id;
     
     this.service.findUser(this.username).subscribe( data => {
       users = data;
       username = users[0].username;
       password = users[0].password;
-      this.checkLogin(username, password);
+      id = users[0].id;
+      this.checkLogin(username, password, id);
     });
   }
 
-  checkLogin(username: string, password: string) {    
+  checkLogin(username: string, password: string, id: number) {    
     if (this.username == username && this.password == password) {
         localStorage.setItem('loginStatus' , 'ingelogd');
         localStorage.setItem('user' , username);
+        localStorage.setItem('id', ''+id);
         this.router.navigateByUrl('userspace');
       } else {
         alert('Invalid login');
