@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { SpecificationDTO } from '../model/SpecificationDTO';
 //import 'rxjs/Rx';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -12,7 +13,35 @@ const httpOptions = {
 @Injectable()
 export class RoutineService {
 
+  private makeNewRoutine = false;
+  private makeNewSpecification = false;
+
+
   constructor(private http: HttpClient ) { }
+
+  public getMakeNewRoutine() {
+    return this.makeNewRoutine;
+  }
+
+  public showMakeNewRoutine() {
+    return this.makeNewRoutine = true;
+  }
+
+  public hideMakeNewRoutine() {
+    return this.makeNewRoutine = false;
+  }
+
+  public getMakeNewSpecification() {
+    return this.makeNewSpecification;
+  }
+
+  public showMakeNewSpecification() {
+    return this.makeNewSpecification = true;
+  }
+
+  public hideMakeNewSpecification() {
+    return this.makeNewSpecification = false;
+  }
 
   save( dto: RoutineDTO ): Observable<RoutineDTO> {
     return this.http.post<RoutineDTO>('http://localhost:9090/api/routine/new', dto);
@@ -29,7 +58,6 @@ export class RoutineService {
   getSpecifications(id: number): Observable<SpecificationDTO[]>{
     return this.http.get<SpecificationDTO[]>('http://localhost:9090/api/routine/' + id + '/specifications');
   }
-
 
 }
 

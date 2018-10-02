@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit{
   checkLogin(username: string, password: string) {    
     if (this.username == username && this.password == password) {
         localStorage.setItem('loginStatus' , 'ingelogd');
+        localStorage.setItem('user' , username);
         this.router.navigateByUrl('userspace');
       } else {
         alert('Invalid login');

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoutineDTO } from '../../model/RoutineDTO';
+import { RoutineService } from '../../Service/RoutineService';
 
 @Component({
   selector: 'app-user-space',
@@ -12,14 +13,10 @@ export class UserSpaceComponent implements OnInit {
   routines: RoutineDTO[];
   currentRoutine: RoutineDTO;
 
-  // show and hide components
-  
-  wantsNewSpecification = false;
+  showNewRoutine = false;
   
 
-
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private routineService: RoutineService) { }
 
   ngOnInit() {
     if (localStorage.length == 0 || localStorage.getItem('loginStatus') != 'ingelogd' ) {
@@ -33,9 +30,8 @@ export class UserSpaceComponent implements OnInit {
   }
 
   newRoutine() {
-    this.wantsNewSpecification = true;
+    this.showNewRoutine = this.routineService.showMakeNewRoutine();
   }
-
 
 
 

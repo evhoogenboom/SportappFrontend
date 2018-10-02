@@ -5,6 +5,7 @@ import { SpecificationDTO } from '../../model/SpecificationDTO';
 import { SpecificationService } from '../../Service/SpecificationService';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserSpaceComponent } from '../user-space/user-space.component';
+import { RoutineService } from '../../Service/RoutineService';
 
 @Component({
   selector: 'app-create-exercise',
@@ -33,7 +34,7 @@ export class CreateExerciseComponent implements OnInit {
   
   
   constructor(private exerciseService: ExerciseService, 
-    private specificationService: SpecificationService) { }
+    private specificationService: SpecificationService, private routineService: RoutineService) { }
 
 
   ngOnInit() {
