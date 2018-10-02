@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RoutineDTO } from '../model/RoutineDTO';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { SpecificationDTO } from '../model/SpecificationDTO';
 //import 'rxjs/Rx';
 
 const httpOptions = {
@@ -14,25 +15,20 @@ export class RoutineService {
   constructor(private http: HttpClient ) { }
 
   save( dto: RoutineDTO ): Observable<RoutineDTO> {
-   // if ( dto.id > 0) // If id larger than 0 then the person needs to be updated not added
-   //   return this.http.put<PersonDto>('http://localhost:9090/api/person/' + dto.id, dto);
-   // else
-   //alert("test");
-      return this.http.post<RoutineDTO>('http://localhost:9090/api/routine/new', dto);
+    return this.http.post<RoutineDTO>('http://localhost:9090/api/routine/new', dto);
   }
 
-  //findUser(username: string): Observable<ExerciseDTO[]> {
-   // return this.http.get<ExerciseDTO[]>('http://localhost:9090/api/login/' + username);
-  //}
-
-  //findPerson(id: number): Observable<PersonDto> {
-    //return this.http.get<PersonDto>('http://localhost:9001/api/person/' + id);
-  //}
-
-  findAllRoutines(): Observable<RoutineDTO[]> {  // bestaat nog niet in backend
-    return this.http.get<RoutineDTO[]>('http://localhost:9090/api/routine/');
+  findAllRoutines(): Observable<RoutineDTO[]> {  
+    return this.http.get<RoutineDTO[]>('http://localhost:9090/api/routine/all');
   }
 
+  addSpecification(id: number, dto: SpecificationDTO): Observable<SpecificationDTO> {
+    return this.http.put<SpecificationDTO>('http://localhost:9090/api/routine/'+ id + '/addSpecification', dto);
+  }
+
+  getSpecifications(id: number): Observable<SpecificationDTO[]>{
+    return this.http.get<SpecificationDTO[]>('http://localhost:9090/api/routine/' + id + '/specifications');
+  }
 
 
 }
