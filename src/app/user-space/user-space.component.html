@@ -1,26 +1,24 @@
-<table>
-<tr>
-  <td>Userspace</td>
-  <td>
-    <button (click)="logout()">
-      Logout
-    </button>
-  </td>
-  <td>
-  <button routerLink="">
-    Home
-  </button>
-  </td>
-</tr>
-<tr><button (click)="newRoutine()">New routine</button></tr>
-  
-</table>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<div *ngIf="showNewRoutine">
-  <app-create-routine>
-
-  </app-create-routine>
+<header id=header>
+  <i class="material-icons">face</i>{{loggedInUser}}
+  <div style='float: right'>
+    <button (click)="logout()"><i class="material-icons">logout</i></button>
+    <div class="divider"></div>
+    <button routerLink=""><i class="material-icons">home</i></button>
 </div>
+</header>
+
+<app-dashboard></app-dashboard>
+
+
+<button (click)="newRoutine()">New routine</button>
+<div *ngIf="showNewRoutine">
+  <app-create-routine></app-create-routine>
+</div>
+
+
+
 
 
 

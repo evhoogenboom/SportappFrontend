@@ -1,6 +1,7 @@
 button {
     border-radius: 10px;
     width: 170px;
+    vertical-align: middle;
 }
 
 .action {
@@ -15,7 +16,13 @@ button {
 
 .delete {
     background-color: white;
-    width: 30px;
+    width: 40px;
     height: 30px;
+    border-color: white;
 
 }
+
+#body {
+    text-align: center;
+}
+

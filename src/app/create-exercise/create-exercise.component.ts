@@ -88,10 +88,4 @@ export class CreateExerciseComponent implements OnInit {
     return specificationDTO;
   }
 
- 
-
-
-
-
-
 }

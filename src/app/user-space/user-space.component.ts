@@ -10,9 +10,8 @@ import { RoutineService } from '../../Service/RoutineService';
 })
 export class UserSpaceComponent implements OnInit {
 
-  routines: RoutineDTO[];
-  currentRoutine: RoutineDTO;
-
+  loggedInUser: string = localStorage.getItem('user');
+  
   showNewRoutine = false;
   
 
