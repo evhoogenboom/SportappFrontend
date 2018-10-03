@@ -67,6 +67,10 @@ export class RoutineService {
     return this.http.get<SpecificationDTO[]>('http://localhost:9090/api/routine/' + id + '/specifications');
   }
 
+  deleteSpecification(id: number): Observable<Object> {
+    return this.http.delete('http://localhost:9090/api/specifications/delete/'+ id);
+  }
+
    
 
 }

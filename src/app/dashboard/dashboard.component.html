@@ -3,16 +3,18 @@
 <div id=body>
   <h1>My routines</h1>
   <p *ngFor="let routine of routines">
-    <button  (click)="select(routine)">{{routine.name}}</button>
-    <button class=delete (click)=deleteRoutine(routine)><i class="material-icons" >delete_outline</i></button>
+    {{routine.name}}
+    <button class=options (click)=deleteRoutine(routine)><i class="material-icons" >delete_outline</i></button>
+    <button class=options (click)=selectRoutine(routine)><i class="material-icons">add</i></button>
   </p>
-  <br> <br>
+</div>
+
+<br> <br>
   <div *ngIf="checkSelected()">
-    <h3>{{selectedRoutine.name}}</h3>
-    <br>
     <h3>Specifications of: {{selectedRoutine.name}}</h3>
+    <p *ngIf=emptyList()>No specifications were added.</p>
     <p *ngFor="let specification of specifications">
-      <button>{{specification.name}}</button>
+      {{specification.name}}
+      <button class=delete (click)=deleteSpecification(specification)><i class="material-icons" >delete_outline</i></button>
     </p>
   </div>
-</div>

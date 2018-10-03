@@ -12,19 +12,9 @@
   </div>
 </header>
 
-<app-dashboard></app-dashboard>
 
-
-<button (click)="newRoutine()">New routine</button>
-<div *ngIf="showNewRoutine">
-  <app-create-routine></app-create-routine>
+<div>
+    <app-dashboard #child1 ></app-dashboard>
+    <button (click)="newRoutine()">New routine</button>
+    <div *ngIf="showNewRoutine"><app-create-routine (newRoutine)="updateRoutines()"></app-create-routine></div>
 </div>
-
-
-
-
-
-
-
-
-

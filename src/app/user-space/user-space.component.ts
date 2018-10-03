@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutineDTO } from '../../model/RoutineDTO';
 import { RoutineService } from '../../Service/RoutineService';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-user-space',
@@ -9,6 +9,8 @@ import { RoutineService } from '../../Service/RoutineService';
   styleUrls: ['./user-space.component.css']
 })
 export class UserSpaceComponent implements OnInit {
+
+  @ViewChild('child1') dashboard: DashboardComponent;
 
   loggedInUser: string = localStorage.getItem('user');
   
@@ -21,6 +23,7 @@ export class UserSpaceComponent implements OnInit {
     if (localStorage.length == 0 || localStorage.getItem('loginStatus') != 'ingelogd' ) {
       this.router.navigateByUrl('login');
     }
+    this.dashboard.updateRoutines();
   }
 
   logout() {
@@ -32,6 +35,8 @@ export class UserSpaceComponent implements OnInit {
     this.showNewRoutine = this.routineService.showMakeNewRoutine();
   }
 
-
+  updateRoutines(){
+    this.dashboard.updateRoutines();
+  }
 
 }
