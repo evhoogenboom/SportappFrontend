@@ -1,25 +1,8 @@
-
-
-<table>
-  <tr>
-    <td>Routine name: </td>
-    <td> <input type="text" [(ngModel)]="name"/></td>
-    <button (click)="createNewRoutine()">Add</button>
-    <button (click)="addRoutine()">Add routine</button>
-  </tr>
-</table>
-
-
-<button (click)="newSpecification()">
-  Add specification
-</button>
-
-
-
-
-
-
-<div *ngIf="showNewSpecification">
-  <app-create-exercise></app-create-exercise>
+<br>
+<div *ngIf="status==0">
+  <button (click)=changeStatus()>New routine</button>
 </div>
-
+<div *ngIf="status==1">
+    Name: <input type="text" [(ngModel)]="name"/>
+    <button (click)="addRoutine()">Add routine</button>
+</div>

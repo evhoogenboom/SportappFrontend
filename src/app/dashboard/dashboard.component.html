@@ -1,18 +1,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<div id=body>
+<div class=body>
   <h1>My routines</h1>
   <p *ngFor="let routine of routines">
-    <button  (click)="select(routine)">{{routine.name}}</button>
-    <button class=delete (click)=deleteRoutine(routine)><i class="material-icons" >delete_outline</i></button>
+    {{routine.name}}
+    <button class=options (click)=deleteRoutine(routine)><i class="material-icons" >delete_outline</i></button>
+    <button class=options (click)=selectRoutine(routine)><i class="material-icons">add</i></button>
   </p>
-  <br> <br>
-  <div *ngIf="checkSelected()">
-    <h3>{{selectedRoutine.name}}</h3>
-    <br>
-    <h3>Specifications of: {{selectedRoutine.name}}</h3>
+</div>
+
+<app-create-routine (added)=updateRoutines()></app-create-routine>
+
+<br>
+  <div class=body *ngIf="checkSelected()">
+    <h3> Specifications of: {{selectedRoutine.name}}</h3>
+    <p *ngIf="specifications?.length < 1">No specifications were added.</p>
     <p *ngFor="let specification of specifications">
-      <button>{{specification.name}}</button>
+      {{specification.repetitions}}
+      <button class=options (click)=deleteSpecification(specification)><i class="material-icons" >delete_outline</i></button>
     </p>
   </div>
+<br>
+
+<div *ngIf="checkSelected()">
+  <app-create-exercise (changed)=showSpecifications(selectedRoutine)></app-create-exercise>
 </div>

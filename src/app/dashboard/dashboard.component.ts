@@ -15,12 +15,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.updateRoutines();
   }
-  
-  
+    
   selectedRoutine: RoutineDTO;
-
-  specifications: SpecificationDTO[];
-
   routines: RoutineDTO [];
  
   updateRoutines() {
@@ -29,23 +25,18 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  select(routine){
+  selectRoutine(routine: RoutineDTO){
+    this.routineService.selectedRoutine = routine;
     this.selectedRoutine = routine;
-    this.showSpecifications();
+    this.showSpecifications(routine);
   }
-
+  
   checkSelected(): Boolean {
     if (this.selectedRoutine == null){
       return false;
     } else {
       return true;
     }
-  }
-
-  showSpecifications(){
-    this.routineService.getSpecifications(this.selectedRoutine.id).subscribe(data => {
-      this.specifications = data;
-    });
   }
   
   deleteRoutine(routine: RoutineDTO){
@@ -55,9 +46,28 @@ export class DashboardComponent implements OnInit {
     });
     
   }
+  
+  newR: Boolean;
 
-  test(){
-    alert("test");
+  newRoutine(){
+    this.newR = true;
   }
+
+
+  specifications: SpecificationDTO[];
+
+
+  showSpecifications(routine: RoutineDTO){
+    this.routineService.getSpecifications(routine.id).subscribe(data => {
+      this.specifications = data;
+    });
+  }
+
+  deleteSpecification(specification: SpecificationDTO){
+    this.routineService.deleteSpecification(specification.id).subscribe(()=> {
+      this.showSpecifications(this.routineService.selectedRoutine);
+    });
+  }
+
 
 }

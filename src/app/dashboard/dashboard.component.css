@@ -10,6 +10,16 @@ h1 {
     font-size: 25px;
 }
 
+h3 {
+    font-family: FreeMono, monospace;
+    font-size: 20px;
+}
+
+div {
+    font-family: FreeMono, monospace;
+    font-size: 15px;
+}
+
 .action {
     background-color: rgb(128, 106, 52);
     color: white;
@@ -19,15 +29,18 @@ h1 {
     color: gray; 
 }
 
-.delete {
+.options {
     background-color: white;
     width: 40px;
     height: 30px;
     border-color: white;
-
 }
 
-#body {
-    text-align: center;
+.body{
+    text-align: right;
+    font-family: FreeMono, monospace;
+    font-size: 15px;
 }
+
+
 
