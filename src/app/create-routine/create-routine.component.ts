@@ -13,7 +13,6 @@ export class CreateRoutineComponent implements OnInit {
   name: string;
   status: number = 0;
 
-  //showNewSpecification = false;
 
   @Output() added = new EventEmitter<string>();
 
@@ -30,21 +29,6 @@ export class CreateRoutineComponent implements OnInit {
     }
   }
 
-  
-
-  //routines: RoutineDTO[];
-
-  /*
-  addRoutine(){
-    let routineDTO = new RoutineDTO();
-    routineDTO.name = this.name;
-    let id = +(localStorage.getItem('id'));
-    this.routineService.addRoutine(id, routineDTO).subscribe(data => {
-      this.newRoutine.emit();
-      });
-  }
-  */
-
   addRoutine(){
     let DTO = new RoutineDTO();
     DTO.name = this.name;
@@ -54,15 +38,5 @@ export class CreateRoutineComponent implements OnInit {
       this.added.emit();
     });
   }
-  
-
-  /*
-  newSpecification() {  //shows the 'createExercise component'
-    this.showNewSpecification = this.routineService.showMakeNewSpecification();
-  }
-  */
-
-  
-  
 
 }

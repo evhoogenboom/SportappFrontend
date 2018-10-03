@@ -1,47 +1,39 @@
 
-<h2>
-  Specify an exercise and add it to your routine:
-</h2>
+<div *ngIf="status==0" style="text-align: right;">
+    <button class=add (click)=changeStatus()>Add specifications</button>
+</div>
 
-<table>
-  <tr><th>Add new exercise</th><th></th><th width="100px">OR</th><th width='250px'>Select an existing exercise</th></tr>
+<div *ngIf="status==1">
+  <h2>Specify the exercise you want to add:</h2>
 
-  <tr>
-    <td>Exercise name</td>
-    <td><input type="text" [(ngModel)]="name"/></td>
-    
-    <td>
-          
-    </td>
-    <td>
-        <form>
-            <select name="exerciseControl" [(ngModel)]="this.selectedExercise">
-              <option [ngValue]="exercise" *ngFor="let exercise of exercises">{{exercise.name}}</option>
-            </select>
-           </form>
-    </td>
-  </tr>
+  <div *ngIf="Estatus==0">
+    <p>Choose an exercise: 
+    <select name="exerciseControl" [(ngModel)]="this.selectedExercise" style="width:150px;">
+      <option [ngValue]="exercise" *ngFor="let exercise of exercises">{{exercise.name}}</option>
+    </select></p>
+    <p>Or create a new one: <button (click)="Estatus=1">New exercise</button></p>
+  </div>
+  <div *ngIf="Estatus==1">
+    <table>
+      <tr><th>New exercise</th></tr>
+      <tr><td>Exercise type:</td><td><input type="text" [(ngModel)]="name"/></td></tr>
+      <tr><td>Description:</td><td><input type="text" [(ngModel)]="description"/></td></tr>
+    </table>
+  </div>
 
-  <tr><td>Exercise description</td><td><input type="text" [(ngModel)]="description"/></td></tr>
-  <tr><td></td></tr>
-</table>
+  <br>
 
-<p>
-  
-</p>
+  <table>
+    <tr><th>Add specific info</th></tr>
+    <tr><td>Repetitions:</td><td><input type="number" [(ngModel)]="repetitions"/></td></tr>
+    <tr><td>Seconds break:</td><td><input type="number" [(ngModel)]="secBreak"/></td></tr>
+    <tr><td>Other:</td><td><input type="text" [(ngModel)]="other"/></td></tr>
+  </table>
 
-<table>
-  <tr><th>Add specific info</th></tr>
-  <tr><td>Specification repetitions</td><td><input type="number" [(ngModel)]="repetitions"/></td></tr>
-  <tr><td>SecBreak</td><td><input type="number" [(ngModel)]="secBreak"/></td></tr>
-  <tr><td>Other info</td><td><input type="text" [(ngModel)]="other"/></td></tr>
-</table>
-
-<p>
-  <button (click)="addSpecification()">
-    Add to routine
-  </button>
-</p>
+  <p>
+    <button class=add (click)="addSpecification()">Add</button>
+  </p>
+</div>
  
   
 

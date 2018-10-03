@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit {
     
   selectedRoutine: RoutineDTO;
   routines: RoutineDTO [];
-  //newName: string;
  
   updateRoutines() {
     this.routineService.findRoutines(+(localStorage.getItem('id'))).subscribe(data => {
@@ -27,6 +26,7 @@ export class DashboardComponent implements OnInit {
   }
 
   selectRoutine(routine: RoutineDTO){
+    this.routineService.selectedRoutine = routine;
     this.selectedRoutine = routine;
     this.showSpecifications(routine);
   }
@@ -46,19 +46,6 @@ export class DashboardComponent implements OnInit {
     });
     
   }
-
-  /*
-  changeRoutineName(id: number, event){
-    console.log(event.target.value);
-    this.newName = event.target.value;
-    console.log(this.newName);
-    this.routineService.changeRoutineName(id, this.newName).subscribe(data => {
-      console.log('changed?');
-      this.updateRoutines();
-    })
-  }
-  */
-
   
   newR: Boolean;
 
@@ -78,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
   deleteSpecification(specification: SpecificationDTO){
     this.routineService.deleteSpecification(specification.id).subscribe(()=> {
-      this.showSpecifications(this.selectedRoutine);
+      this.showSpecifications(this.routineService.selectedRoutine);
     });
   }
 

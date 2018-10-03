@@ -14,15 +14,16 @@ const httpOptions = {
 export class RoutineService {
 
   // show and hide components
-  private makeNewRoutine = false;
-  private makeNewSpecification = false;
+  //private makeNewRoutine = false;
+  //private makeNewSpecification = false;
 
   // keep track of selected routine for adding specifications
-  currentRoutine: RoutineDTO;
+  selectedRoutine: RoutineDTO;
 
 
   constructor(private http: HttpClient ) { }
-
+  
+  /*
   public showMakeNewRoutine() {
     return this.makeNewRoutine = true;
   }
@@ -37,12 +38,6 @@ export class RoutineService {
 
   public hideMakeNewSpecification() {
     return this.makeNewSpecification = false;
-  }
-
-
-  /*
-  save( dto: RoutineDTO ): Observable<RoutineDTO> {
-    return this.http.post<RoutineDTO>('http://localhost:9090/api/routine/' +'new', dto);
   }
   */
 

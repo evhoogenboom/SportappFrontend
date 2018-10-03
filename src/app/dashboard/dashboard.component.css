@@ -36,7 +36,7 @@ div {
     border-color: white;
 }
 
-#body{
+.body{
     text-align: right;
     font-family: FreeMono, monospace;
     font-size: 15px;
