@@ -40,29 +40,34 @@ export class RoutineService {
   }
 
 
-  private baseUrl = 'http://localhost:9090/api/routine/';
-
-
+  /*
   save( dto: RoutineDTO ): Observable<RoutineDTO> {
-    return this.http.post<RoutineDTO>(this.baseUrl +'new', dto);
+    return this.http.post<RoutineDTO>('http://localhost:9090/api/routine/' +'new', dto);
   }
+  */
 
+  addRoutine(id: number, dto: RoutineDTO): Observable<RoutineDTO> {
+    return this.http.put<RoutineDTO>('http://localhost:9090/api/user/'+ id +'/addRoutine', dto);
+  }
+	
   findRoutines(id: number): Observable<RoutineDTO[]> {
     console.log('(in RoutineService: user id = '+ id);
     return this.http.get<RoutineDTO[]>('http://localhost:9090/api/user/'+ id + '/routines');
   }
 
   deleteRoutine(id: number): Observable<Object> {
-    return this.http.delete(this.baseUrl +'delete/' + id);
+    return this.http.delete('http://localhost:9090/api/routine/' +'delete/' + id);
   }
 
   addSpecification(id: number, dto: SpecificationDTO): Observable<SpecificationDTO> {
-    return this.http.put<SpecificationDTO>(this.baseUrl + id + '/addSpecification', dto);
+    return this.http.put<SpecificationDTO>('http://localhost:9090/api/routine/' + id + '/addSpecification', dto);
   }
 
   getSpecifications(id: number): Observable<SpecificationDTO[]>{
-    return this.http.get<SpecificationDTO[]>(this.baseUrl + id + '/specifications');
+    return this.http.get<SpecificationDTO[]>('http://localhost:9090/api/routine/' + id + '/specifications');
   }
+
+   
 
 }
 

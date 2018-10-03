@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RoutineService } from '../../Service/RoutineService';
 import { RoutineDTO } from '../../model/RoutineDTO';
+import { Router } from '@angular/router';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-create-routine',
@@ -13,16 +15,30 @@ export class CreateRoutineComponent implements OnInit {
 
   showNewSpecification = false;
 
-  constructor(private routineService: RoutineService) { }
+  constructor(private routineService: RoutineService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  /*
   createNewRoutine() {
     let routineDTO = new RoutineDTO();
     routineDTO.name = this.name;
     this.routineService.save(routineDTO).subscribe(data => {
       this.routineService.currentRoutine = data;
+      });
+  }
+  */
+
+  @Input() jojo: DashboardComponent;
+
+  addRoutine(){
+    let routineDTO = new RoutineDTO();
+    routineDTO.name = this.name;
+    let id = +(localStorage.getItem('id'));
+    this.routineService.addRoutine(id, routineDTO).subscribe(data => {
+      this.routineService.findRoutines(id);
+      //document.location = document.location;
       });
   }
 
