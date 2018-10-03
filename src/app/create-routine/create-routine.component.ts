@@ -11,18 +11,30 @@ import { Router } from '@angular/router';
 export class CreateRoutineComponent implements OnInit {
 
   name: string;
+  status: number = 0;
 
-  showNewSpecification = false;
+  //showNewSpecification = false;
+
+  @Output() added = new EventEmitter<string>();
 
   constructor(private routineService: RoutineService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  @Output() newRoutine = new EventEmitter<string>();
+  changeStatus(){
+    if (this.status == 0){
+      this.status = 1;
+    } else if (this.status ==1 ){
+      this.status = 0;
+    }
+  }
 
-  routines: RoutineDTO[];
+  
 
+  //routines: RoutineDTO[];
+
+  /*
   addRoutine(){
     let routineDTO = new RoutineDTO();
     routineDTO.name = this.name;
@@ -31,6 +43,18 @@ export class CreateRoutineComponent implements OnInit {
       this.newRoutine.emit();
       });
   }
+  */
+
+  addRoutine(){
+    let DTO = new RoutineDTO();
+    DTO.name = this.name;
+    let id = +(localStorage.getItem('id'));
+    this.routineService.addRoutine(id, DTO).subscribe(data => {
+      this.changeStatus();
+      this.added.emit();
+    });
+  }
+  
 
   /*
   newSpecification() {  //shows the 'createExercise component'

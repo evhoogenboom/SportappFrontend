@@ -1,20 +1,8 @@
-
-
-
-    Routine name: <input type="text" [(ngModel)]="name"/>
-    <button (click)="addRoutine()">Add routine</button>
-
-
 <br>
-<br>
-<button (click)="newSpecification()">Add specification</button>
-
-
-
-
-
-
-<div *ngIf="showNewSpecification">
-  <app-create-exercise></app-create-exercise>
+<div *ngIf="status==0">
+  <button (click)=changeStatus()>New routine</button>
 </div>
-
+<div *ngIf="status==1">
+    Name: <input type="text" [(ngModel)]="name"/>
+    <button (click)="addRoutine()">Add routine</button>
+</div>

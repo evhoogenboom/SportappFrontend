@@ -71,6 +71,9 @@ export class RoutineService {
     return this.http.delete('http://localhost:9090/api/specifications/delete/'+ id);
   }
 
+  changeRoutineName(id: number, name: String): Observable<Object>{
+    return this.http.put<String>('http://localhost:9090/api/routine/'+ id +'/changeName', name)
+  }
    
 
 }

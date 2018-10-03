@@ -1,7 +1,17 @@
 button {
     font-family: FreeMono, monospace;
+    font-style: italic;
+    font-size: 15px;
     border-radius: 10px;
-    width: 170px;
+    width: 130px;
+    height: 30px;
     vertical-align: middle;
     background-color: white;
+    border-color: white;
+}
+
+div {
+    font-style: italic;
+    font-family: FreeMono, monospace;
+    text-align: right;
 }

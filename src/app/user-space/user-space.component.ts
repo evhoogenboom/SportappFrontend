@@ -10,11 +10,11 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 })
 export class UserSpaceComponent implements OnInit {
 
-  @ViewChild('child1') dashboard: DashboardComponent;
+  //@ViewChild('child1') dashboard: DashboardComponent;
 
   loggedInUser: string = localStorage.getItem('user');
   
-  showNewRoutine = false;
+  //showNewRoutine = false;
   
 
   constructor(private router: Router, private routineService: RoutineService) { }
@@ -22,8 +22,8 @@ export class UserSpaceComponent implements OnInit {
   ngOnInit() {
     if (localStorage.length == 0 || localStorage.getItem('loginStatus') != 'ingelogd' ) {
       this.router.navigateByUrl('login');
+      //this.dashboard.updateRoutines();
     }
-    this.dashboard.updateRoutines();
   }
 
   logout() {
@@ -31,12 +31,12 @@ export class UserSpaceComponent implements OnInit {
     this.router.navigateByUrl('login');
   }
 
+  /*
   newRoutine() {
     this.showNewRoutine = this.routineService.showMakeNewRoutine();
   }
+  */
 
-  updateRoutines(){
-    this.dashboard.updateRoutines();
-  }
+
 
 }
