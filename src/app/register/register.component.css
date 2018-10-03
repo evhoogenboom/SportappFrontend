@@ -1,0 +1,23 @@
+div {
+    font-family: FreeMono, monospace;
+    text-align: center;
+
+    color: powderblue; 
+    width: 500px;
+    padding: 25px;
+    margin: 25px;
+}
+
+button {
+    font-family: FreeMono, monospace;
+    border-radius: 10px;
+    background-color: white;
+}
+
+div button {
+    width: 250px;
+}
+
+.material-icons {
+    color: gray; 
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoutineDTO } from '../../model/RoutineDTO';
 import { RoutineService } from '../../Service/RoutineService';
 import { SpecificationDTO } from '../../model/SpecificationDTO';
+import { LoginService } from '../../Service/LoginService';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ import { SpecificationDTO } from '../../model/SpecificationDTO';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private routineService: RoutineService) { }
+  constructor(private routineService: RoutineService,
+    private user: LoginService) { }
 
   ngOnInit() {
     this.updateRoutines();
@@ -21,8 +23,9 @@ export class DashboardComponent implements OnInit {
 
   specifications: SpecificationDTO[];
 
+ 
   updateRoutines(){
-    this.routineService.findAllRoutines().subscribe(data => {
+    this.routineService.findRoutines(+(localStorage.getItem('id'))).subscribe(data => {
       this.routines = data;
       });
   }
@@ -46,10 +49,12 @@ export class DashboardComponent implements OnInit {
     });
   }
   
-  
-  delete(routine: RoutineDTO){
-    alert();
+  deleteRoutine(routine: RoutineDTO){
+    console.log(routine);
+    this.routineService.deleteRoutine(routine.id).subscribe(()=> {
+      this.updateRoutines();
+    });
+    
   }
-
 
 }

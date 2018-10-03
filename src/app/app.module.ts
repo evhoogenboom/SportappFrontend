@@ -26,11 +26,10 @@ import { CreateRoutineComponent } from './create-routine/create-routine.componen
 
 
 const appRoutes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: FrontpageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'userspace', component: UserSpaceComponent },
-  { path: 'dashboard', component: DashboardComponent}
+  { path: 'userspace', component: UserSpaceComponent }
 ];
 
 

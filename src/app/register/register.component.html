@@ -1,38 +1,14 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <p>
-  <button routerLink="">
-    Home
-  </button>
+  <button routerLink=""><i class="material-icons">home</i></button>
 </p>
-
-  <table>
-    <tr>
-      <td>
-        Enter a username
-      </td>
-      <td>
-          <input type="text" [(ngModel)]="username"/>
-      </td>
-    </tr>
-    <tr>
-  
-    </tr>
-    <tr>
-      <td>
-        Enter a password
-      </td>
-      <td>
-          <input type="text" [(ngModel)]="password"/>
-      </td>
-    </tr>
-    <tr>
-  
-    </tr>
-    <tr>
-      <button (click)="save()">
-        Register
-      </button>
-    </tr>
-  </table>
-
-
+        
+<div style="text-align: center">
+  <p>Enter a username <input type="text" [(ngModel)]="username"/></p>
+  <p>Enter a password <input type="password" [(ngModel)]="password"/></p>
+  <br>
+  <button (click)="save()">register</button>
+</div>
+           
+        

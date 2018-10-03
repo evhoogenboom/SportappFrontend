@@ -1,26 +1,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-
-<h1>
-  Routines
-</h1>
-<p *ngFor="let routine of routines">
-  <button  (click)="select(routine)">{{routine.name}}</button>
-  <button (click)=delete() class=delete><i class="material-icons" >delete</i></button>
-</p>
-<p>
-  name: <input type=text>
-  <button class=action>New Routine</button>
-</p>
-<br> <br>
-<div *ngIf="checkSelected()">
-  <table>
-    <td><button class=action>Delete</button></td>
-    <td><h3>{{selectedRoutine.name}}</h3></td>
-  </table>
-  
-  <h3>Specifications of: {{selectedRoutine.name}}</h3>
-  <p *ngFor="let specification of specifications">
-    <button>{{specification.name}}</button>
+<div id=body>
+  <h1>My routines</h1>
+  <p *ngFor="let routine of routines">
+    <button  (click)="select(routine)">{{routine.name}}</button>
+    <button class=delete (click)=delete(routine)><i class="material-icons" >delete_outline</i></button>
   </p>
+  <br> <br>
+  <div *ngIf="checkSelected()">
+    <table>
+      <td><button class=action>Delete</button></td>
+      <td><h3>{{selectedRoutine.name}}</h3></td>
+    </table>
+    
+    <h3>Specifications of: {{selectedRoutine.name}}</h3>
+    <p *ngFor="let specification of specifications">
+      <button>{{specification.name}}</button>
+    </p>
+  </div>
 </div>

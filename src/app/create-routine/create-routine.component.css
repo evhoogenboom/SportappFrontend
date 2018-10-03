@@ -1,0 +1,7 @@
+button {
+    font-family: FreeMono, monospace;
+    border-radius: 10px;
+    width: 170px;
+    vertical-align: middle;
+    background-color: white;
+}

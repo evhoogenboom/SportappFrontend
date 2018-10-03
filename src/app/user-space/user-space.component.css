@@ -1,0 +1,31 @@
+#header {
+    background-color: powderblue;
+}
+
+header {
+    font-family: FreeMono, monospace; 
+    height: 35px;
+    border-radius: 10px;
+}
+
+header button {
+    background-color: powderblue;
+    border-block-end-color: rgb(15, 15, 83);
+    border-right:  rgb(15, 15, 83);
+    border-left-color: powderblue;
+    border-block-start-color: powderblue;
+}
+
+
+
+button {
+    font-family: FreeMono, monospace;
+    border-radius: 10px;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.divider{
+    width: 7px;
+    display: inline-block;
+}
