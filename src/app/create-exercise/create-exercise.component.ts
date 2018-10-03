@@ -30,6 +30,7 @@ export class CreateExerciseComponent implements OnInit {
    // keep track of selected exercise
    selectedExercise: ExerciseDTO;
    exercises: ExerciseDTO[];
+   specifications: SpecificationDTO[];
 
   
   
@@ -78,6 +79,7 @@ export class CreateExerciseComponent implements OnInit {
     specificationDTO = this.addSpecificationInfo(specificationDTO);
     this.specificationService.save(specificationDTO).subscribe(data => {
       specificationDTO = data;
+      this.addSpecificationToRoutine(specificationDTO);
       });
   }
 
@@ -87,5 +89,16 @@ export class CreateExerciseComponent implements OnInit {
     specificationDTO.other = this.other;
     return specificationDTO;
   }
+
+  addSpecificationToRoutine(dto: SpecificationDTO) {
+    this.specifications = this.routineService.currentRoutine.specifications;
+    if (this.specifications == null) {
+      this.specifications = new Array();
+    }
+    this.specifications.push(dto);
+    console.log(this.specifications);
+    this.routineService.currentRoutine.specifications = this.specifications;
+  }
+
 
 }

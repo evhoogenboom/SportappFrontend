@@ -13,15 +13,15 @@ const httpOptions = {
 @Injectable()
 export class RoutineService {
 
+  // show and hide components
   private makeNewRoutine = false;
   private makeNewSpecification = false;
 
+  // keep track of selected routine for adding specifications
+  currentRoutine: RoutineDTO;
+
 
   constructor(private http: HttpClient ) { }
-
-  public getMakeNewRoutine() {
-    return this.makeNewRoutine;
-  }
 
   public showMakeNewRoutine() {
     return this.makeNewRoutine = true;
@@ -29,10 +29,6 @@ export class RoutineService {
 
   public hideMakeNewRoutine() {
     return this.makeNewRoutine = false;
-  }
-
-  public getMakeNewSpecification() {
-    return this.makeNewSpecification;
   }
 
   public showMakeNewSpecification() {
@@ -43,7 +39,9 @@ export class RoutineService {
     return this.makeNewSpecification = false;
   }
 
+
   private baseUrl = 'http://localhost:9090/api/routine/';
+
 
   save( dto: RoutineDTO ): Observable<RoutineDTO> {
     return this.http.post<RoutineDTO>(this.baseUrl +'new', dto);
