@@ -21,12 +21,14 @@ export class CreateRoutineComponent implements OnInit {
   createNewRoutine() {
     let routineDTO = new RoutineDTO();
     routineDTO.name = this.name;
-    
+    this.routineService.save(routineDTO).subscribe(data => {
+      this.routineService.currentRoutine = data;
+      });
   }
 
-  newSpecification() {
+  newSpecification() {  //shows the 'createExercise component'
     this.showNewSpecification = this.routineService.showMakeNewSpecification();
   }
-
+  
 
 }
