@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ExerciseService } from '../../Service/ExerciseService';
 import { ExerciseDTO } from '../../model/ExerciseDTO';
 import { SpecificationDTO } from '../../model/SpecificationDTO';
 import { SpecificationService } from '../../Service/SpecificationService';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserSpaceComponent } from '../user-space/user-space.component';
 import { RoutineService } from '../../Service/RoutineService';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-create-exercise',
@@ -17,7 +17,8 @@ import { Router } from '@angular/router';
 export class CreateExerciseComponent implements OnInit {
   countryForm: FormGroup;
 
- 
+
+  @Output() changed = new EventEmitter<String>();
 
   // exercise info
   name = '';
@@ -28,11 +29,14 @@ export class CreateExerciseComponent implements OnInit {
   secBreak: number;
   other: string;
 
-   // keep track of selected exercise
-   selectedExercise: ExerciseDTO;
-   exercises: ExerciseDTO[];
-   specifications: SpecificationDTO[];
+  // keep track of selected exercise
+  selectedExercise: ExerciseDTO;
+  exercises: ExerciseDTO[];
+  //specifications: SpecificationDTO[];
 
+  // display
+  status: number = 0;
+  Estatus: number = 0;
   
   
   constructor(private exerciseService: ExerciseService, 
@@ -40,26 +44,26 @@ export class CreateExerciseComponent implements OnInit {
 
 
   ngOnInit() {
-   this.loadExercises();
+   //this.loadExercises();
   }
 
+  changeStatus(){
+    if (this.status == 0){
+      this.status = 1;
+    } else if (this.status ==1 ){
+      this.status = 0;
+    }
+  }
 
+  /*
   loadExercises() {
     this.exerciseService.findAllExercises().subscribe(data => {
       this.exercises = data;
       });
   }
-
-  addSpecification() {
-    if (this.name != '') {
-      this.newExercise();
-    } else if (this.selectedExercise != null) {
-      this.reUseExercise();
-    } 
-  }
   
   reUseExercise() {
-    alert('reuse exercise');
+    //alert('reuse exercise');
     this.saveSpecification(this.selectedExercise);
   }
 
@@ -73,7 +77,9 @@ export class CreateExerciseComponent implements OnInit {
     this.saveSpecification(dto);
     });
   }
+  */
 
+  /*
   saveSpecification(exerciseDTO: ExerciseDTO) {
     let specificationDTO = new SpecificationDTO();
     specificationDTO.exercise = exerciseDTO;
@@ -83,14 +89,25 @@ export class CreateExerciseComponent implements OnInit {
       this.addSpecificationToRoutine(specificationDTO);
       });
   }
+  */
 
+  /*
+ addSpecification() {
+  if (this.name != '') {
+    this.newExercise();
+  } else if (this.selectedExercise != null) {
+    this.reUseExercise();
+  } 
+}
   addSpecificationInfo(specificationDTO: SpecificationDTO) {
     specificationDTO.repetitions = this.repetitions;
     specificationDTO.secBreak = this.secBreak;
     specificationDTO.other = this.other;
     return specificationDTO;
   }
+  */
 
+  /*
   addSpecificationToRoutine(dto: SpecificationDTO) {
     this.specifications = this.routineService.currentRoutine.specifications;
     if (this.specifications == null) {
@@ -100,6 +117,18 @@ export class CreateExerciseComponent implements OnInit {
     console.log(this.specifications);
     this.routineService.currentRoutine.specifications = this.specifications;
   }
+  */
 
+ addSpecification() {
+  let dto: SpecificationDTO = new SpecificationDTO();
+  dto.repetitions = this.repetitions;
+  dto.secBreak = this.secBreak;
+  dto.other = this.other;
+  let id = this.routineService.selectedRoutine.id;
+  this.routineService.addSpecification(id, dto).subscribe(data =>{
+    this.changed.emit();
+    this.changeStatus();
+  });
+}
 
 }

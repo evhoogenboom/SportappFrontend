@@ -5,10 +5,20 @@ button {
     vertical-align: middle;
 }
 
+h1 {
+    font-family: FreeMono, monospace;
+    font-size: 25px;
+}
+
 h2 {
     font-family: FreeMono, monospace;
-    color: powderblue;
     font-size: 20px;
+    color: powderblue;
+}
+
+div {
+    font-family: FreeMono, monospace;
+    font-size: 15px;
 }
 
 .action {
@@ -20,15 +30,29 @@ h2 {
     color: gray; 
 }
 
-.delete {
+.options {
     background-color: white;
     width: 40px;
     height: 30px;
     border-color: white;
-
 }
 
-#body {
-    text-align: center;
+#body{
+    text-align: right;
+    font-family: FreeMono, monospace;
+    font-size: 15px;
 }
+
+.add {
+    font-family: FreeMono, monospace;
+    font-style: italic;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    vertical-align: middle;
+    background-color: white;
+    border-color: white;
+}
+
 

@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { RoutineService } from '../../Service/RoutineService';
 import { RoutineDTO } from '../../model/RoutineDTO';
 import { Router } from '@angular/router';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-create-routine',
@@ -12,39 +11,32 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class CreateRoutineComponent implements OnInit {
 
   name: string;
+  status: number = 0;
 
-  showNewSpecification = false;
+
+  @Output() added = new EventEmitter<string>();
 
   constructor(private routineService: RoutineService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  /*
-  createNewRoutine() {
-    let routineDTO = new RoutineDTO();
-    routineDTO.name = this.name;
-    this.routineService.save(routineDTO).subscribe(data => {
-      this.routineService.currentRoutine = data;
-      });
+  changeStatus(){
+    if (this.status == 0){
+      this.status = 1;
+    } else if (this.status ==1 ){
+      this.status = 0;
+    }
   }
-  */
-
-  @Input() jojo: DashboardComponent;
 
   addRoutine(){
-    let routineDTO = new RoutineDTO();
-    routineDTO.name = this.name;
+    let DTO = new RoutineDTO();
+    DTO.name = this.name;
     let id = +(localStorage.getItem('id'));
-    this.routineService.addRoutine(id, routineDTO).subscribe(data => {
-      this.routineService.findRoutines(id);
-      //document.location = document.location;
-      });
+    this.routineService.addRoutine(id, DTO).subscribe(data => {
+      this.changeStatus();
+      this.added.emit();
+    });
   }
-
-  newSpecification() {  //shows the 'createExercise component'
-    this.showNewSpecification = this.routineService.showMakeNewSpecification();
-  }
-  
 
 }
