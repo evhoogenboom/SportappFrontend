@@ -15,3 +15,14 @@ div {
     font-family: FreeMono, monospace;
     text-align: right;
 }
+
+.options {
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    border-color: white;
+}
+
+.material-icons {
+    color: gray; 
+}
