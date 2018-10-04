@@ -4,6 +4,7 @@ import { ExerciseDTO } from '../../model/ExerciseDTO';
 import { SpecificationDTO } from '../../model/SpecificationDTO';
 import { FormGroup } from '@angular/forms';
 import { RoutineService } from '../../Service/RoutineService';
+import { Router } from '@angular/router';
 
 
 @Component({
