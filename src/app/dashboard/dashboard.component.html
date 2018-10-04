@@ -16,7 +16,7 @@
     <h3> Specifications of: {{selectedRoutine.name}}</h3>
     <p *ngIf="specifications?.length < 1">No specifications were added.</p>
     <p *ngFor="let specification of specifications">
-      {{specification.repetitions}}
+      {{specification.repetitions}} x {{specification.exercise.name}}
       <button class=options (click)=deleteSpecification(specification)><i class="material-icons" >delete_outline</i></button>
     </p>
   </div>
