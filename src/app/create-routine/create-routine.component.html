@@ -1,8 +1,11 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <br>
 <div *ngIf="status==0">
   <button (click)=changeStatus()>New routine</button>
 </div>
 <div *ngIf="status==1">
+    <button class=options (click)=changeStatus()><i class="material-icons">clear</i></button>
     Name: <input type="text" [(ngModel)]="name"/>
     <button (click)="addRoutine()">Add routine</button>
 </div>
